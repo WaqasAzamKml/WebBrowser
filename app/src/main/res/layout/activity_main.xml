@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context="com.dozydroid.webbrowser.MainActivity">
 
-    
+
+    <Button
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnVisit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visit"/>
+    <EditText
+        android:id="@+id/editText"
+        android:layout_toLeftOf="@id/btnVisit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter URL here"/>
+    <WebView
+        android:id="@+id/webView"
+        android:layout_below="@id/btnVisit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>
