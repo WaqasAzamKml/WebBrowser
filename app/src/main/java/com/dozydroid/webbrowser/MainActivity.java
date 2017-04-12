@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
-    Button button;
+    Button btnVisit, btnBack, btnForward, btnRefresh;
     WebView webView;
 
     @Override
@@ -22,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         editText = (EditText) findViewById(R.id.editText);
-        button = (Button) findViewById(R.id.btnVisit);
+        btnVisit = (Button) findViewById(R.id.btnVisit);
+        btnBack = (Button) findViewById(R.id.btnBack);
+        btnForward = (Button) findViewById(R.id.btnForward);
+        btnRefresh = (Button) findViewById(R.id.btnRefresh);
+
         webView = (WebView) findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btnVisit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(editText.getText())){
@@ -38,6 +42,28 @@ public class MainActivity extends AppCompatActivity {
                     editText.setError("URL Required");
                     editText.requestFocus();
                 }
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(webView.canGoBack()){
+                    webView.goBack();
+                }
+            }
+        });
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(webView.canGoForward()){
+                    webView.goForward();
+                }
+            }
+        });
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.reload();
             }
         });
     }
